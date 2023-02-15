@@ -17,26 +17,28 @@ public class consultation {
     // constructor
     // default constructor
     consultation() {
-        System.out.println("Choose a date for a consultation");
-        this.date = scan.nextLine();
-        System.out.println("Choose a hour for a consultation");
-        this.hour = scan.nextInt();
-        System.out.println("Choose a minute for a consultation");
-        this.minutes = scan.nextInt();
-        System.out.println("Choose a duration for a consultation");
-        this.duration = scan.nextInt();
-
-        String msg = verification(date, hour, minutes, duration);
-        if (msg == "available") {
-            this.date = date;
-            this.hour = hour;
-            this.minutes = minutes;
-            this.duration = duration;
-            CompletedList(this.date, this.hour, this.minutes, this.duration);
-        } else {
-            System.out.println("the consultation is not available");
-            System.out.println("choose a other consultation");
-        }
+        /*
+         * System.out.println("Choose a date for a consultation");
+         * this.date = scan.nextLine();
+         * System.out.println("Choose a hour for a consultation");
+         * this.hour = scan.nextInt();
+         * System.out.println("Choose a minute for a consultation");
+         * this.minutes = scan.nextInt();
+         * System.out.println("Choose a duration for a consultation");
+         * this.duration = scan.nextInt();
+         * 
+         * String msg = verification(date, hour, minutes, duration);
+         * if (msg == "available") {
+         * this.date = date;
+         * this.hour = hour;
+         * this.minutes = minutes;
+         * this.duration = duration;
+         * CompletedList(this.date, this.hour, this.minutes, this.duration);
+         * } else {
+         * System.out.println("the consultation is not available");
+         * System.out.println("choose a other consultation");
+         * }
+         */
     } // end of default constructor
 
     // constructor with parameters
@@ -48,6 +50,7 @@ public class consultation {
             this.minutes = minutes;
             this.duration = duration;
             CompletedList(this.date, this.hour, this.minutes, this.duration);
+            System.out.println("consultation confirmed");
         } else {
             System.out.println("the consultation is not available");
             System.out.println("choose a other consultation");
@@ -176,9 +179,9 @@ public class consultation {
                 }
             }
         }
-        if (msg == "available") {
+        if (msg == "not available") {
         } else {
-            msg = "not available";
+            msg = "available";
         }
         return msg;
     }
