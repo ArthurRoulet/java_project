@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class consultation {
     private Date date;
@@ -8,22 +9,22 @@ public class consultation {
 
     Scanner scan = new Scanner(System.in);
 
-    List dateList = new ArrayList<Date>();
-    List hourList = new ArrayList<integer>();
-    List minutesList = new ArrayList<integer>();
-    List durationList = new ArrayList<integer>();
+    ArrayList<Date> dateList = new ArrayList<Date>();
+    ArrayList<Integer> hourList = new ArrayList<integer>();
+    ArrayList<Integer> minutesList = new ArrayList<integer>();
+    ArrayList<Integer> durationList = new ArrayList<integer>();
 
     // constructor
     // default constructor
     consultation() {
         System.out.println("Choose a date for a consultation");
-        this.date = scan.nextLine();
+        this.date = scan.next();
         System.out.println("Choose a hour for a consultation");
-        this.hour = scan.nextLine();
+        this.hour = scan.next();
         System.out.println("Choose a minute for a consultation");
-        this.minutes = scan.nextLine();
+        this.minutes = scan.next();
         System.out.println("Choose a duration for a consultation");
-        this.duration = scan.nextLine();
+        this.duration = scan.next();
 
         String msg = verification(date, hour, minutes, duration);
         if (msg == "available") {
