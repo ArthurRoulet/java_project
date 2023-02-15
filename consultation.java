@@ -112,9 +112,9 @@ public class consultation {
         int end_consultation_hour = 0;
         int end_consultation_minutes = 0;
 
-        String msg; // for the return
+        String msg = ""; // for the return
 
-        for (int i = 0; i < dateList.lenght; i++) {
+        for (int i = 0; i < dateList.size(); i++) {
             if (dateList.get(i) == date) {
                 if (hourList.get(i) == hour) {
                     if (minutesList.get(i) == minutes) {
@@ -136,7 +136,7 @@ public class consultation {
                         }
                     }
 
-                    if ((hour > inter_hour - 1) && (minutes > inter_minutes - 1)) {
+                    if ((hour > inter_hour - 1) && (minutes > inter_minute - 1)) {
                         if ((hour < end_consultation_hour + 1) && (minutes < end_consultation_minutes + 1)) {
                             msg = "not available";
                             break;
@@ -165,7 +165,7 @@ public class consultation {
                         if ((end_consultation_hour <= inter_hour)) {
                             if (end_consultation_minutes <= inter_minute) {
                                 msg = "available";
-                                list(date, hour, minutes, duration);
+                                CompletedList(date, hour, minutes, duration);
                                 break;
                             } else {
                                 msg = "not available";
@@ -175,6 +175,10 @@ public class consultation {
                     }
                 }
             }
+        }
+        if (msg == "available") {
+        } else {
+            msg = "not available";
         }
         return msg;
     }
