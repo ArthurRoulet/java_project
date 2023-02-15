@@ -123,59 +123,63 @@ public class consultation {
                     if (minutesList.get(i) == minutes) {
                         msg = "not available";
                         break;
-                    }
-                } else {
-                    // data recovery
-                    inter_hour = hourList.get(i);
-                    inter_minute = minutesList.get(i);
-                    inter_duration = durationList.get(i);
-
-                    // end of the consultation
-                    end_consultation_minutes = inter_minute + inter_duration;
-                    if (end_consultation_minutes > 59) {
-                        while (end_consultation_minutes > 59) {
-                            end_consultation_hour = end_consultation_hour + 1;
-                            end_consultation_minutes = end_consultation_minutes - 60;
-                        }
-                    }
-
-                    if ((hour > inter_hour - 1) && (minutes > inter_minute - 1)) {
-                        if ((hour < end_consultation_hour + 1) && (minutes < end_consultation_minutes + 1)) {
-                            msg = "not available";
-                            break;
-                        }
-                    } else {
-                        // verification compared with the next consultation
+                    } else if (minutesList.get(i) < minutes) {
                         // data recovery
-                        end_consultation_minutes = 0;
-                        end_consultation_hour = 0;
-                        end_consultation_minutes = minutes + duration;
-                        end_consultation_hour = hour;
+                        inter_hour = hourList.get(i);
+                        inter_minute = minutesList.get(i);
+                        inter_duration = durationList.get(i);
 
-                        while (end_consultation_minutes < 59) {
-                            end_consultation_minutes = end_consultation_minutes - 60;
-                            end_consultation_hour = end_consultation_hour + 1;
+                        // end of the consultation
+                        end_consultation_minutes = inter_minute + inter_duration;
+                        if (end_consultation_minutes > 59) {
+                            while (end_consultation_minutes > 59) {
+                                end_consultation_hour = end_consultation_hour + 1;
+                                end_consultation_minutes = end_consultation_minutes - 60;
+                            }
                         }
 
-                        // data recovery
-                        inter_hour = 0;
-                        inter_minute = 0;
-                        inter_duration = 0;
-                        inter_hour = hourList.get(i + 1);
-                        inter_minute = minutesList.get(i + 1);
-                        inter_duration = durationList.get(i + 1);
-
-                        if ((end_consultation_hour <= inter_hour)) {
-                            if (end_consultation_minutes <= inter_minute) {
-                                msg = "available";
-                                CompletedList(date, hour, minutes, duration);
-                                break;
-                            } else {
+                        if ((hour > inter_hour - 1) && (minutes > inter_minute - 1)) {
+                            if ((hour < end_consultation_hour + 1) && (minutes < end_consultation_minutes + 1)) {
                                 msg = "not available";
                                 break;
                             }
+                        } else {
+                            // verification compared with the next consultation
+                            // data recovery
+                            end_consultation_minutes = 0;
+                            end_consultation_hour = 0;
+                            end_consultation_minutes = minutes + duration;
+                            end_consultation_hour = hour;
+
+                            while (end_consultation_minutes < 59) {
+                                end_consultation_minutes = end_consultation_minutes - 60;
+                                end_consultation_hour = end_consultation_hour + 1;
+                            }
+
+                            // data recovery
+                            inter_hour = 0;
+                            inter_minute = 0;
+                            inter_duration = 0;
+                            inter_hour = hourList.get(i + 1);
+                            inter_minute = minutesList.get(i + 1);
+                            inter_duration = durationList.get(i + 1);
+
+                            if ((end_consultation_hour <= inter_hour)) {
+                                if (end_consultation_minutes <= inter_minute) {
+                                    msg = "available";
+                                    CompletedList(date, hour, minutes, duration);
+                                    break;
+                                } else {
+                                    msg = "not available";
+                                    break;
+                                }
+                            }
                         }
+                    } else { // minutesList.get(i) > minutes
+
                     }
+                } else if (hourList.get(i) == hour) {
+
                 }
             }
         }
