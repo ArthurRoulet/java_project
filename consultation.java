@@ -18,13 +18,13 @@ public class consultation {
     // default constructor
     consultation() {
         System.out.println("Choose a date for a consultation");
-        this.date = scan.next();
+        this.date = scan.nextLine();
         System.out.println("Choose a hour for a consultation");
-        this.hour = scan.next();
+        this.hour = scan.nextInt();
         System.out.println("Choose a minute for a consultation");
-        this.minutes = scan.next();
+        this.minutes = scan.nextInt();
         System.out.println("Choose a duration for a consultation");
-        this.duration = scan.next();
+        this.duration = scan.nextInt();
 
         String msg = verification(date, hour, minutes, duration);
         if (msg == "available") {
