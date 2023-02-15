@@ -10,9 +10,9 @@ public class consultation {
     Scanner scan = new Scanner(System.in);
 
     ArrayList<Date> dateList = new ArrayList<Date>();
-    ArrayList<Integer> hourList = new ArrayList<integer>();
-    ArrayList<Integer> minutesList = new ArrayList<integer>();
-    ArrayList<Integer> durationList = new ArrayList<integer>();
+    ArrayList<Integer> hourList = new ArrayList<Integer>();
+    ArrayList<Integer> minutesList = new ArrayList<Integer>();
+    ArrayList<Integer> durationList = new ArrayList<Integer>();
 
     // constructor
     // default constructor
