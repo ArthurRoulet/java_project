@@ -1,3 +1,5 @@
+package consultation;
+
 import java.util.Date;
 
 public class consultationTest {
