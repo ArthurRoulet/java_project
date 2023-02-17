@@ -125,4 +125,19 @@ public class doctor extends person {
         new Treatment(name, description, startDate, endDate, frequency, wayToTake, dosage, cost, associatedDoctor,
                 associatedPatient);
     } // creationTreatment method
+
+    // see information on the patient
+    public void informationPatient() {
+        String informationPatient = patient.toString();
+        System.out.println(informationPatient);
+    }
+
+    // override String method
+    @Override
+    public String toString() {
+        return "name : " + super.getFirstName() + " " + super.getLastName() +
+                ", specialty : " + this.getSpecialty() +
+                ", phone number : " + super.getPhoneNumber() + ", adress : " + super.getAdress()
+                + ", date employed :" + this.getDateEmployed();
+    }
 }

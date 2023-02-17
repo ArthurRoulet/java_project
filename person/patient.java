@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import consultation.consultation;
+import Projet.Treatment;
 
 public class patient extends person {
     // data members
@@ -88,4 +89,19 @@ public class patient extends person {
     } // end demandConsultation method
 
     // see the treatment
+    public void seeTreatment() {
+        String information;
+        information = Treatment.toString();
+        System.out.println(information);
+    } // end seeTreatment
+
+    // override String method
+    @Override
+    public String toString() {
+        return "name : " + super.getFirstName() + " " + super.getLastName() +
+                ", Date of Birth : " + super.getDateOfBirth() + ", sex : " + this.getSex() +
+                "phone number : " + super.getPhoneNumber() + ", adress" + super.getAdress() +
+                ", employer : " + this.getEmployer() + ", Insurrance company : " + this.getInsurranceCo() +
+                ", angtecedent : " + this.getAntecedent();
+    }
 }
