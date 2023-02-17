@@ -152,7 +152,6 @@ public class consultation {
 
         // recuperate data of consultation.txt
         for (int z = 0; z < nbr_lign; z++) {
-
             day = inFile.nextInt();
             month = inFile.nextInt();
             year = inFile.nextInt();
@@ -164,9 +163,12 @@ public class consultation {
         }
 
         for (int i = 0; i < nbr_lign; i++) {
+            // if is the date of the consultation demand
             if (Date.get(i) == date) {
+                // if is the consultation end during the same period of the donsultation demand
                 if (endHour.get(i) == hour) {
                     if (endMin.get(i) <= minutes) {
+                        // consultation of the consultation who come after
                         if ((Hour.get(i + 1) == hour) && (Min.get(i + 1) > minutes)) {
                             end_consultation_minutes = minutes + 30;
                             end_consultation_hour = hour;
@@ -216,6 +218,7 @@ public class consultation {
                             break;
                         }
                     }
+                    // else if the end of the consultation if after the begin of consultation demand
                 } else if ((Hour.get(i) == hour) && (endHour.get(i) > hour)) {
                     msg = "not available";
                 }
