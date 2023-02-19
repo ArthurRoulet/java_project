@@ -91,9 +91,8 @@ public class patient extends person {
 
     // see the treatment
     public void seeTreatment() {
-        String information;
-        // information = Treatment.toString();
-        // System.out.println(information);
+        String information = Treatment.toString();
+        System.out.println(information);
     } // end seeTreatment
 
     // override String method
