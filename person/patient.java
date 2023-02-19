@@ -9,10 +9,10 @@ import Projet.Treatment;
 public class patient extends person {
     // data members
     private String employer;
-    private String InsurranceCo;
+    private String insurranceCo;
     private String sex;
     private ArrayList<String> antecedent = new ArrayList<String>();
-    private consultation consult;
+    private Consultation consult;
 
     // default constructor
     patient() {
