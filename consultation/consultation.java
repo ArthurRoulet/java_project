@@ -4,7 +4,7 @@ import java.util.*;
 import javax.swing.JPopupMenu.Separator;
 import java.io.*;
 
-public class consultation {
+public class Consultation {
     private Date date;
     private int hour;
     private int minutes;
@@ -13,11 +13,11 @@ public class consultation {
 
     // constructor
     // default constructor
-    consultation() {
+    Consultation() {
     } // end of default constructor
 
     // constructor with parameters
-    consultation(Date date, int hour, int minutes) throws FileNotFoundException, IOException {
+    Consultation(Date date, int hour, int minutes) throws FileNotFoundException, IOException {
         String msg = verification(date, hour, minutes);
         if (msg == "available") {
             this.date = date;
