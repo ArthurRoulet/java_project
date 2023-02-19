@@ -12,6 +12,7 @@ public class patient extends person {
     private String InsurranceCo;
     private String sex;
     private ArrayList<String> antecedent = new ArrayList<String>();
+    private consultation consult;
 
     // default constructor
     patient() {
@@ -84,15 +85,15 @@ public class patient extends person {
         hour = demand.nextInt();
         min = demand.nextInt();
 
-        new consultation(demandDate, hour, min);
+        // consult = new consultation(demandDate, hour, min);
 
     } // end demandConsultation method
 
     // see the treatment
     public void seeTreatment() {
         String information;
-        information = Treatment.toString();
-        System.out.println(information);
+        // information = Treatment.toString();
+        // System.out.println(information);
     } // end seeTreatment
 
     // override String method

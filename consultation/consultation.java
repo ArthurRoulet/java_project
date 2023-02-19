@@ -88,9 +88,8 @@ public class consultation {
         inter_hour += hour;
 
         outFile.write(
-                day + " " + month + " " + year + " " + hour + " " + minutes + " " + inter_hour + " " + inter_minutes
+                day + "|" + month + "|" + year + "|" + hour + "|" + minutes + "|" + inter_hour + "|" + inter_minutes
                         + "\n");
-        outFile.println();
 
         // close the inFile and outFile objects
         inFile.close();
@@ -119,8 +118,10 @@ public class consultation {
         // end of consultation
         ArrayList<Integer> endHour = new ArrayList<Integer>();
         ArrayList<Integer> endMin = new ArrayList<Integer>();
+        int h, m, eh, em;
 
-        int nbr_lign = control_lign();
+        int nbr_lign = 0;
+        nbr_lign = control_lign();
 
         System.out.println(nbr_lign);
 
@@ -128,19 +129,24 @@ public class consultation {
                 new FileReader("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt"));
         outFile = new PrintWriter("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
 
-        // recuperate data of consultation.txt
-        for (int z = 0; z < nbr_lign; z++) {
+        if (nbr_lign != 0) {
+            // recuperate data of consultation.txt
             day = inFile.nextInt();
             month = inFile.nextInt();
             year = inFile.nextInt();
+            h = inFile.nextInt();
+            m = inFile.nextInt();
+            eh = inFile.nextInt();
+            em = inFile.nextInt();
 
-            Hour.add(inFile.nextInt());
-            Min.add(inFile.nextInt());
-            endHour.add(inFile.nextInt());
-            endMin.add(inFile.nextInt());
+            Date.add(new Date(year, month, day));
+            Hour.add(h);
+            Min.add(m);
+            endHour.add(eh);
+            endMin.add(em);
         }
 
-        for (int i = 0; i < nbr_lign; i++) {
+        for (int i = 0; i < (nbr_lign / 23); i++) {
             // if is the date of the consultation demand
             if (Date.get(i) == date) {
                 // if is the consultation end during the same period of the donsultation demand

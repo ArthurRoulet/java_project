@@ -16,7 +16,7 @@ public class consultationTest {
         Date date = new Date(2001, 10, 4);
         consultation test1 = new consultation(date, 10, 30);
 
-        Date date2 = new Date(2001, 10, 4);
+        Date date2 = new Date(2022, 10, 4);
         consultation test2 = new consultation(date, 10, 40);
 
         // close the inFile and outFile objects
