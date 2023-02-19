@@ -87,7 +87,7 @@ public class consultation {
         }
         inter_hour += hour;
 
-        outFile.write(
+        outFile.print(
                 day + "|" + month + "|" + year + "|" + hour + "|" + minutes + "|" + inter_hour + "|" + inter_minutes
                         + "\n");
 
@@ -118,7 +118,6 @@ public class consultation {
         // end of consultation
         ArrayList<Integer> endHour = new ArrayList<Integer>();
         ArrayList<Integer> endMin = new ArrayList<Integer>();
-        int h, m, eh, em;
 
         int nbr_lign = 0;
         nbr_lign = control_lign();
@@ -130,20 +129,19 @@ public class consultation {
         outFile = new PrintWriter("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
 
         if (nbr_lign != 0) {
-            // recuperate data of consultation.txt
-            day = inFile.nextInt();
-            month = inFile.nextInt();
-            year = inFile.nextInt();
-            h = inFile.nextInt();
-            m = inFile.nextInt();
-            eh = inFile.nextInt();
-            em = inFile.nextInt();
+            for (int z = 0; z < (nbr_lign / 23); z++) {
+                // recuperate data of consultation.txt
+                day = inFile.nextInt();
+                month = inFile.nextInt();
+                year = inFile.nextInt();
 
-            Date.add(new Date(year, month, day));
-            Hour.add(h);
-            Min.add(m);
-            endHour.add(eh);
-            endMin.add(em);
+                Hour.add(inFile.nextInt());
+                Min.add(inFile.nextInt());
+                endHour.add(inFile.nextInt());
+                endMin.add(inFile.nextInt());
+
+                Date.add(new Date(year, month, day));
+            }
         }
 
         for (int i = 0; i < (nbr_lign / 23); i++) {
