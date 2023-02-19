@@ -1,9 +1,7 @@
 package consultation;
 
 import java.util.*;
-
 import javax.swing.JPopupMenu.Separator;
-
 import java.io.*;
 
 public class consultation {
@@ -124,12 +122,13 @@ public class consultation {
 
         System.out.println(nbr_lign);
 
-        inFile = new Scanner(
-                new FileReader("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt"));
-        outFile = new PrintWriter("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
+        if (nbr_lign > 0) {
+            inFile = new Scanner(
+                    new FileReader("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt"));
+            outFile = new PrintWriter(
+                    "C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
 
-        if (nbr_lign != 0) {
-            for (int z = 0; z < (nbr_lign / 23); z++) {
+            for (int i = 0; i < (nbr_lign / 23); i++) {
                 // recuperate data of consultation.txt
                 day = inFile.nextInt();
                 month = inFile.nextInt();
@@ -141,17 +140,47 @@ public class consultation {
                 endMin.add(inFile.nextInt());
 
                 Date.add(new Date(year, month, day));
-            }
-        }
 
-        for (int i = 0; i < (nbr_lign / 23); i++) {
-            // if is the date of the consultation demand
-            if (Date.get(i) == date) {
-                // if is the consultation end during the same period of the donsultation demand
-                if (endHour.get(i) == hour) {
-                    if (endMin.get(i) <= minutes) {
-                        // consultation of the consultation who come after
-                        if ((Hour.get(i + 1) == hour) && (Min.get(i + 1) > minutes)) {
+                // if is the date of the consultation demand
+                if (Date.get(i) == date) {
+                    // if is the consultation end during the same period of the donsultation demand
+                    if (endHour.get(i) == hour) {
+                        if (endMin.get(i) <= minutes) {
+                            // consultation of the consultation who come after
+                            if ((Hour.get(i + 1) == hour) && (Min.get(i + 1) > minutes)) {
+                                end_consultation_minutes = minutes + 30;
+                                end_consultation_hour = hour;
+
+                                while (end_consultation_minutes > 59) {
+                                    end_consultation_hour += 1;
+                                    end_consultation_minutes = end_consultation_minutes - 60;
+                                }
+                                if (end_consultation_hour > Hour.get(i + 1)) {
+                                    msg = "not available";
+                                    break;
+                                } else if (end_consultation_minutes > Min.get(i + 1)) {
+                                    msg = "not available";
+                                    break;
+                                }
+                            } else if (Hour.get(i + 1) > hour) {
+                                end_consultation_minutes = minutes + 30;
+                                end_consultation_hour = hour;
+
+                                while (end_consultation_minutes > 59) {
+                                    end_consultation_hour += 1;
+                                    end_consultation_minutes = end_consultation_minutes - 60;
+                                }
+                                if (end_consultation_hour > Hour.get(i + 1)) {
+                                    msg = "not available";
+                                    break;
+                                } else if (end_consultation_minutes > Min.get(i + 1)) {
+                                    msg = "not available";
+                                    break;
+                                }
+                            }
+                        }
+                    } else if ((Hour.get(i + 1) == hour) || (Hour.get(i + 1) == hour + 1)) {
+                        if (Min.get(i + 1) >= minutes) {
                             end_consultation_minutes = minutes + 30;
                             end_consultation_hour = hour;
 
@@ -166,54 +195,22 @@ public class consultation {
                                 msg = "not available";
                                 break;
                             }
-                        } else if (Hour.get(i + 1) > hour) {
-                            end_consultation_minutes = minutes + 30;
-                            end_consultation_hour = hour;
-
-                            while (end_consultation_minutes > 59) {
-                                end_consultation_hour += 1;
-                                end_consultation_minutes = end_consultation_minutes - 60;
-                            }
-                            if (end_consultation_hour > Hour.get(i + 1)) {
-                                msg = "not available";
-                                break;
-                            } else if (end_consultation_minutes > Min.get(i + 1)) {
-                                msg = "not available";
-                                break;
-                            }
                         }
+                        // else if the end of the consultation if after the begin of consultation demand
+                    } else if ((Hour.get(i) == hour) && (endHour.get(i) > hour)) {
+                        msg = "not available";
                     }
-                } else if ((Hour.get(i + 1) == hour) || (Hour.get(i + 1) == hour + 1)) {
-                    if (Min.get(i + 1) >= minutes) {
-                        end_consultation_minutes = minutes + 30;
-                        end_consultation_hour = hour;
-
-                        while (end_consultation_minutes > 59) {
-                            end_consultation_hour += 1;
-                            end_consultation_minutes = end_consultation_minutes - 60;
-                        }
-                        if (end_consultation_hour > Hour.get(i + 1)) {
-                            msg = "not available";
-                            break;
-                        } else if (end_consultation_minutes > Min.get(i + 1)) {
-                            msg = "not available";
-                            break;
-                        }
-                    }
-                    // else if the end of the consultation if after the begin of consultation demand
-                } else if ((Hour.get(i) == hour) && (endHour.get(i) > hour)) {
-                    msg = "not available";
                 }
             }
+            // close the inFile and outFile objects
+            inFile.close();
+            outFile.close();
         }
         if (msg == "") {
             msg = "available";
         }
-        // close the inFile and outFile objects
-        inFile.close();
-        outFile.close();
-
         return msg;
+
     }
 
     public int control_lign() throws IOException {
