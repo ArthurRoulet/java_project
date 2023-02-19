@@ -19,10 +19,10 @@ public class patient extends person {
     } // end default constructor
 
     // constructor with parameters
-    patient(String FName, String LName, Date DOB, int PNumber, String adress, String Employer, String ICo, String s) {
-        super(FName, LName, DOB, PNumber, adress);
-        this.employer = Employer;
-        this.InsurranceCo = ICo;
+    patient(String fName, String lName, Date dOB, int pNumber, String adress, String employer, String iCo, String s) {
+        super(fName, lName, dOB, pNumber, adress);
+        this.employer = employer;
+        this.insurranceCo = iCo;
         this.sex = s;
     } // end constructor
 
@@ -33,8 +33,8 @@ public class patient extends person {
     } // end setEmployer method
 
     // set InsurranceCo
-    public void setInsurranceCo(String ICo) {
-        this.InsurranceCo = ICo;
+    public void setInsurranceCo(String iCo) {
+        this.insurranceCo = iCo;
     } // end setInssurranceCo method
 
     // set sex
@@ -55,7 +55,7 @@ public class patient extends person {
 
     // get InsurranceCo
     public String getInsurranceCo() {
-        return this.InsurranceCo;
+        return this.insurranceCo;
     } // end getInsurranceCo method
 
     // get sex
