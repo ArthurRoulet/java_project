@@ -128,8 +128,8 @@ public class doctor extends person {
 
     // see information on the patient
     public void informationPatient() {
-        // String informationPatient = patient.toString();
-        // System.out.println(informationPatient);
+        String informationPatient = patient.toString();
+        System.out.println(informationPatient);
     }
 
     // override String method
