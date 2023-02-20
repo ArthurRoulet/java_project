@@ -127,7 +127,9 @@ public class Consultation {
             outFile = new PrintWriter(
                     "C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
 
-            for (int y = 0; y < (nbr_lign / 20); y++) {
+                
+            
+            for (int i = 0; i < (nbr_lign / 20); i++) {
                 // recuperate data of consultation.txt
                 day = inFile.nextInt();
                 month = inFile.nextInt();
@@ -140,10 +142,7 @@ public class Consultation {
 
                 
                 Date.add(new Date(year, month, day));
-            }
 
-            
-            for (int i = 0; i < (nbr_lign / 20); i++) {
                 // if is the date of the consultation demand
                 if (Date.get(i) == date) {
                     // if is the consultation end during the same period of the donsultation demand
