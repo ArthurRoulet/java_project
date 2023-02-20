@@ -126,23 +126,23 @@ public class Consultation {
                     new FileReader("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt"));
             outFile = new PrintWriter(
                     "C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
-            for (int y = 0; y < (nbr_lign / 20); y++) {
+            for (int y = 0; y < nbr_lign; y++) {
+                day = month = year =  0;
                 // recuperate data of consultation.txt
                 day = inFile.nextInt();
                 month = inFile.nextInt();
                 year = inFile.nextInt();
-
+                Date.add(new Date(year, month, day));
+                
                 Hour.add(inFile.nextInt());
                 Min.add(inFile.nextInt());
                 endHour.add(inFile.nextInt());
                 endMin.add(inFile.nextInt());
-
-                Date.add(new Date(year, month, day));
             }
         
                 
             
-            for (int i = 0; i < (nbr_lign / 20); i++) {
+            for (int i = 0; i < nbr_lign; i++) {
                 // if is the date of the consultation demand
                 if (Date.get(i) == date) {
                     // if is the consultation end during the same period of the donsultation demand
@@ -219,7 +219,8 @@ public class Consultation {
 
     public int control_lign() throws IOException {
         File i = new File("C:\\Users\\arthu\\OneDrive\\Bureau\\java_project\\consultation\\consultation.txt");
-
-        return (int) (i.length());
+        int nb_lign = (int) (i.length());
+        nb_lign = nb_lign / 16;
+        return nb_lign;
     }
 }
